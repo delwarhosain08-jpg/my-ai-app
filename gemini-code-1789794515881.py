@@ -1,6 +1,5 @@
 import streamlit as st
-streamlit
-google-genai
+from google import genai
 
 # =========================================================
 # 1. PAGE CONFIGURATION
