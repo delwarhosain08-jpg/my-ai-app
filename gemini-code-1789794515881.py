@@ -159,8 +159,8 @@ with st.sidebar:
     st.markdown(
         """
         📍 **স্থান:** ঢাকা, বাংলাদেশ  
-        📱 **মোবাইল:** 01XXXXXXXXX  
-        ✉️ **Email:** example@gmail.com
+        📱 **মোবাইল:** 01734165721,  01563148910 
+        ✉️ **Email:** delwarhosain08@gmail.com
         """
     )
 
