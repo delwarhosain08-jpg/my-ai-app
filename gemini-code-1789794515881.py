@@ -8,20 +8,25 @@ st.set_page_config(
     layout="wide"
 )
 
-# সাইডবার: এআই টিউটর সেটআপ ও সোশ্যাল লিংক
+# ==========================================
+# 🔑 আপনার আসল API Key টি নিচের কোটেশনের ভেতরে বসান:
+# ==========================================
+MY_API_KEY = "এখানে_আপনার_API_KEY_বসাবেন"
+
+# ব্যাকএন্ডে API Key কনফিগার করা
+if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
+    genai.configure(api_key=MY_API_KEY)
+
+# সাইডবার: সোশ্যাল মিডিয়া লিংক ও পরিচিতি
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3429/3429149.png", width=90)
     st.title("আদর্শ প্রাইভেট কেয়ার")
     st.caption("গুণগত শিক্ষা, উজ্জ্বল ভবিষ্যৎ")
     st.divider()
     
-    st.subheader("🤖 এআই স্টাডি হেল্পার")
-    api_key = st.text_input("Gemini API Key দিন:", type="password")
-    
-    st.divider()
     st.subheader("🔗 আমাদের সোশ্যাল মিডিয়া")
     st.markdown("[🎥 ইউটিউব চ্যানেল](https://youtube.com)")
-    st.markdown("[👤 ফেসবুক প্রোফাইল / পেজ](https://facebook.com)")
+    st.markdown("[👤 হোসেনের ফেসবুক প্রোফাইল](https://facebook.com)")
 
 # মূল পেজ নেভিগেশন (ট্যাব)
 tab1, tab2, tab3, tab4 = st.tabs(["🏠 পরিচিতি ও কোর্সসমূহ", "🌟 বিশেষ বৈশিষ্ট্য", "📚 এআই শিক্ষক", "📞 যোগাযোগ ও ঠিকানা"])
@@ -64,14 +69,13 @@ with tab2:
     col_b.metric("এসএসসি পাশের হার", "৯৮%")
     col_c.metric("মডেল টেস্ট সুবিধা", "সাপ্তাহিক")
 
-# ট্যাব ৩: এআই টিউটর (পড়াশোনায় সহায়তার জন্য)
+# ট্যাব ৩: এআই টিউটর (কোনো Key ইনপুট ছাড়া সরাসরি চ্যাট)
 with tab3:
     st.header("🤖 আপনার এআই স্টাডি অ্যাসিস্ট্যান্ট")
     st.write("গণিত, ইংরেজি বা অন্য যেকোনো বিষয়ের পড়া বুঝতে এআই শিক্ষকের সাহায্য নিন।")
     
-    if api_key:
+    if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
         try:
-            genai.configure(api_key=api_key)
             model = genai.GenerativeModel('gemini-2.5-flash')
             
             if "messages" not in st.session_state:
@@ -93,7 +97,7 @@ with tab3:
         except Exception as e:
             st.error(f"একটি ত্রুটি ঘটেছে: {e}")
     else:
-        st.info("💡 এআই টিউটর ব্যবহার করতে বামপাশের সাইডবারে আপনার Gemini API Key দিন।")
+        st.warning("⚠️ কোডের ভেতরে API Key বসানো হয়নি। দয়া করে কোডের ১৬ নম্বর লাইনে আপনার API Key টি বসান।")
 
 # ট্যাব ৪: যোগাযোগ
 with tab4:
