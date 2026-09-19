@@ -1,5 +1,4 @@
 import streamlit as st
-from google import genai
 
 # =========================================================
 # 1. PAGE CONFIGURATION
@@ -12,7 +11,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# 2. CUSTOM CSS (প্রিমিয়াম কালার কম্বিনেশন ও ব্যাকগ্রাউন্ড)
+# 2. CUSTOM CSS
 # =========================================================
 st.markdown(
     """
@@ -22,9 +21,9 @@ st.markdown(
         background: linear-gradient(135deg, #f5f9ff 0%, #eef5ff 100%);
     }
 
-    /* Sidebar background */
+    /* Sidebar background (পরিবর্তিত কালার শেড) */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #101d4f 0%, #182b72 100%);
+        background: linear-gradient(180deg, #1f4068 0%, #162447 100%);
     }
 
     section[data-testid="stSidebar"] h1, 
@@ -59,7 +58,7 @@ st.markdown(
         line-height: 1.7;
     }
 
-    /* Cards design */
+    /* Cards */
     .card {
         background: white;
         padding: 25px;
@@ -104,29 +103,11 @@ st.markdown(
 )
 
 # =========================================================
-# 3. GEMINI API CONFIGURATION
-# =========================================================
-try:
-    API_KEY = st.secrets["GEMINI_API_KEY"]
-except Exception:
-    API_KEY = ""
-
-client = None
-if API_KEY:
-    try:
-        client = genai.Client(api_key=API_KEY)
-    except Exception:
-        client = None
-
-# =========================================================
-# 4. SIDEBAR (লোগো, ঠিকানা ও সোশ্যাল মিডিয়া লিঙ্ক)
+# 3. SIDEBAR (লোগো, ঠিকানা ও সোশ্যাল মিডিয়া)
 # =========================================================
 with st.sidebar:
-    # -----------------------------------------------------
-    # LOGO
-    # -----------------------------------------------------
     try:
-        st.image("logo.png", use_container_width=True)
+        st.image("1000038219.png", use_container_width=True)
     except Exception:
         st.markdown(
             """
@@ -137,9 +118,6 @@ with st.sidebar:
             unsafe_allow_html=True
         )
 
-    # -----------------------------------------------------
-    # NAME & SLOGAN
-    # -----------------------------------------------------
     st.markdown(
         """
         <div style="text-align:center; padding:5px;">
@@ -152,38 +130,24 @@ with st.sidebar:
 
     st.divider()
 
-    # -----------------------------------------------------
-    # CONTACT INFO
-    # -----------------------------------------------------
     st.subheader("📞 যোগাযোগ")
     st.markdown(
         """
         📍 **স্থান:** ঢাকা, বাংলাদেশ  
-        📱 **মোবাইল:** 01734165721,  01563148910 
+        📱 **মোবাইল:** 01734165721, 01563148910  
         ✉️ **Email:** delwarhosain08@gmail.com
         """
     )
 
     st.divider()
 
-    # -----------------------------------------------------
-    # SOCIAL MEDIA LINKS
-    # -----------------------------------------------------
     st.subheader("🌐 সোশ্যাল মিডিয়া")
 
-    # YouTube Channel
     st.markdown(
         """
         <a href="https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2Qkzg" target="_blank" style="display:block; background:#ff0000; color:white; padding:12px; margin:8px 0; border-radius:10px; text-align:center; text-decoration:none; font-weight:bold;">
             🎥 YouTube Channel
         </a>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Facebook Profile
-    st.markdown(
-        """
         <a href="https://www.facebook.com/share/1DHesGeakU/" target="_blank" style="display:block; background:#1877f2; color:white; padding:12px; margin:8px 0; border-radius:10px; text-align:center; text-decoration:none; font-weight:bold;">
             👤 Facebook Profile
         </a>
@@ -195,7 +159,7 @@ with st.sidebar:
     st.caption("© 2026 আদর্শ প্রাইভেট কেয়ার")
 
 # =========================================================
-# 5. HERO SECTION
+# 4. HERO SECTION
 # =========================================================
 st.markdown(
     """
@@ -208,18 +172,18 @@ st.markdown(
 )
 
 # =========================================================
-# 6. MAIN TABS
+# 5. MAIN TABS (AI বাদ দিয়ে স্টুডেন্ট চ্যাট রুম যোগ করা হয়েছে)
 # =========================================================
 tab1, tab2, tab3 = st.tabs(
     [
         "🏠 হোম",
-        "🤖 AI স্টাডি অ্যাসিস্ট্যান্ট",
+        "💬 শিক্ষার্থী চ্যাট রুম",
         "📚 আমাদের সম্পর্কে"
     ]
 )
 
 # =========================================================
-# 7. HOME TAB
+# 6. HOME TAB
 # =========================================================
 with tab1:
     st.header("স্বাগতম! 👋")
@@ -275,110 +239,59 @@ with tab1:
 
     with feature2:
         st.success("✅ ডিজিটাল শিক্ষা")
-        st.success("✅ AI Study Assistant")
         st.success("✅ শিক্ষার্থীবান্ধব পরিবেশ")
+        st.success("✅ নিয়মিত গাইডলাইন")
 
 # =========================================================
-# 8. AI STUDY ASSISTANT TAB (GEMINI AI CHATBOT)
+# 7. STUDENT CHAT ROOM TAB (শিক্ষার্থীদের নিজেদের মধ্যে আলোচনার জন্য)
 # =========================================================
 with tab2:
-    st.header("🤖 আপনার AI Tutor")
-    st.write("গণিত, ইংরেজি, বিজ্ঞান অথবা যেকোনো পড়াশোনার প্রশ্ন করুন। AI আপনাকে সহজভাবে বুঝিয়ে দেবে।")
+    st.header("💬 শিক্ষার্থী আলোচনা ও চ্যাট রুম")
+    st.write("এখানে শিক্ষার্থীরা তাদের পড়াশোনা সংক্রান্ত বিষয় নিয়ে নিজেদের মধ্যে আলোচনা ও বার্তা আদান-প্রদান করতে পারবে।")
 
-    clear_col1, clear_col2 = st.columns([5, 1])
-    with clear_col2:
-        if st.button("🗑️ চ্যাট মুছুন", use_container_width=True):
-            st.session_state.messages = []
-            st.rerun()
+    # চ্যাট হিস্ট্রি স্টোরেজ ইনিশিয়ালাইজেশন
+    if "student_messages" not in st.session_state:
+        st.session_state.student_messages = [
+            {"name": "শিক্ষক মহোদয়", "text": "সবাইকে আদর্শ প্রাইভেট কেয়ার চ্যাট রুমে স্বাগতম! পড়ালেখার বিষয়ে এখানে আলোচনা করতে পারো।"}
+        ]
 
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+    # মেসেজ ইনপুট ফর্ম
+    with st.form("chat_form", clear_on_submit=True):
+        col_name, col_msg = st.columns([1, 2])
+        with col_name:
+            student_name = st.text_input("আপনার নাম ও শ্রেণী:", placeholder="যেমন: রাহিম (নবম শ্রেণি)")
+        with col_msg:
+            student_text = st.text_input("আপনার বার্তা বা প্রশ্ন:", placeholder="এখানে কিছু লিখুন...")
+        
+        submit_btn = st.form_submit_button("📤 বার্তা পাঠান")
 
-    if len(st.session_state.messages) == 0:
+        if submit_btn:
+            if student_name.strip() and student_text.strip():
+                st.session_state.student_messages.append({
+                    "name": student_name,
+                    "text": student_text
+                })
+                st.success("আপনার বার্তাটি সফলভাবে যুক্ত হয়েছে!")
+            else:
+                st.warning("দয়া করে নাম এবং বার্তা উভয়ই পূরণ করুন।")
+
+    st.divider()
+    st.subheader("📜 সাম্প্রতিক আলোচনা:")
+
+    # মেসেজগুলো নিচ থেকে উপরে বা উপর থেকে নিচে দেখানোর জন্য
+    for msg in reversed(st.session_state.student_messages):
         st.markdown(
-            """
-            <div class="card">
-                <h3>👋 আসসালামু আলাইকুম!</h3>
-                <p>আমি আদর্শ প্রাইভেট কেয়ারের AI Study Tutor।</p>
-                <p>আপনি আমাকে গণিত, ইংরেজি, বিজ্ঞান, সাধারণ জ্ঞান অথবা যেকোনো পড়াশোনার প্রশ্ন করতে পারেন।</p>
-                <p><b>উদাহরণ:</b></p>
-                <ul>
-                    <li>ভগ্নাংশ কীভাবে বুঝব?</li>
-                    <li>Present Perfect Tense বুঝিয়ে দাও।</li>
-                    <li>Photosynthesis কী?</li>
-                    <li>2x + 5 = 15 সমাধান করো।</li>
-                </ul>
+            f"""
+            <div style="background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 5px solid #172b72; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <b>👤 {msg['name']}</b><br>
+                <p style="margin: 5px 0 0 0; color: #333;">{msg['text']}</p>
             </div>
             """,
             unsafe_allow_html=True
         )
 
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    prompt = st.chat_input("📚 আপনার পড়াশোনার প্রশ্ন এখানে লিখুন...")
-
-    if prompt:
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        if not API_KEY:
-            answer = "⚠️ Gemini API Key পাওয়া যায়নি। Streamlit Secrets-এ GEMINI_API_KEY যোগ করুন।"
-            with st.chat_message("assistant"):
-                st.warning(answer)
-            st.session_state.messages.append({"role": "assistant", "content": answer})
-
-        elif client is None:
-            answer = "⚠️ Gemini Client তৈরি করা যায়নি। আপনার API Key পরীক্ষা করুন।"
-            with st.chat_message("assistant"):
-                st.error(answer)
-            st.session_state.messages.append({"role": "assistant", "content": answer})
-
-        else:
-            try:
-                system_instruction = (
-                    "আপনি আদর্শ প্রাইভেট কেয়ারের একজন সহায়ক AI Tutor।\n"
-                    "শিক্ষার্থীদের সহজ ও সুন্দর বাংলায় পড়াবেন।\n"
-                    "নিয়ম:\n"
-                    "১. কঠিন বিষয় সহজ ভাষায় ব্যাখ্যা করবেন।\n"
-                    "২. গণিত হলে ধাপে ধাপে সমাধান দেখাবেন।\n"
-                    "৩. ইংরেজি হলে বাংলা ব্যাখ্যা ও উদাহরণ দেবেন।\n"
-                    "৪. শুধু উত্তর না দিয়ে বিষয়টি বুঝিয়ে শেখাবেন।\n"
-                    "৫. শিক্ষার্থীর বয়স উপযোগী ভাষা ব্যবহার করবেন।"
-                )
-
-                # চ্যাট হিস্ট্রি গুছিয়ে তৈরি করা
-                contents = []
-                for msg in st.session_state.messages:
-                    role = "user" if msg["role"] == "user" else "model"
-                    contents.append({
-                        "role": role,
-                        "parts": [{"text": msg["content"]}]
-                    })
-
-                response = client.models.generate_content(
-                    model="gemini-2.5-flash",
-                    contents=contents,
-                    config={"system_instruction": system_instruction}
-                )
-
-                answer = response.text
-
-                with st.chat_message("assistant"):
-                    st.markdown(answer)
-
-                st.session_state.messages.append({"role": "assistant", "content": answer})
-
-            except Exception as e:
-                error_message = f"❌ AI থেকে উত্তর পাওয়া যায়নি। Error: {str(e)}"
-                with st.chat_message("assistant"):
-                    st.error(error_message)
-                st.session_state.messages.append({"role": "assistant", "content": error_message})
-
 # =========================================================
-# 9. ABOUT TAB
+# 8. ABOUT TAB
 # =========================================================
 with tab3:
     st.header("📚 আমাদের সম্পর্কে")
@@ -401,11 +314,10 @@ with tab3:
         st.success("📝 নিয়মিত পরীক্ষা")
     with about_col2:
         st.success("💻 ডিজিটাল শিক্ষা")
-        st.success("🤖 AI সহায়তা")
         st.success("🌱 শিক্ষার্থীর উন্নয়ন")
 
 # =========================================================
-# 10. FOOTER
+# 9. FOOTER
 # =========================================================
 st.markdown(
     """
