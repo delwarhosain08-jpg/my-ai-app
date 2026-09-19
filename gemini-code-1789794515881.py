@@ -41,7 +41,7 @@ if user_input:
         # Gemini API কানেক্ট ও প্রসেসিং
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-1.5-flash")
+            model = genai.GenerativeModel("gemini-2.0-flash")
 
             full_prompt = f"System Role: {system_role}\nUser Question: {user_input}"
 
