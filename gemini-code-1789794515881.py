@@ -1,59 +1,113 @@
-import google.generativeai as genai
 import streamlit as st
+import google.generativeai as genai
 
-# ১. ওয়েবসাইটের শিরোনাম ও পেজ কনফিগারেশন
-st.set_page_config(page_title="Custom AI Assistant", page_icon="🤖")
-st.title("🤖 কাস্টম এআই অ্যাসিস্ট্যান্ট")
-st.caption("আপনার ব্যবসার জন্য একটি স্মার্ট এআই সমাধান")
+# ১. পেজ কনফিগারেশন
+st.set_page_config(
+    page_title="আদর্শ প্রাইভেট কেয়ার",
+    page_icon="🎓",
+    layout="wide"
+)
 
-# ২. সাইডবার (API Key এবং কনফিগারেশনের জন্য)
+# সাইডবার: এআই টিউটর সেটআপ ও সোশ্যাল লিংক
 with st.sidebar:
-    st.header("⚙️ সিস্টেম সেটআপ")
-    api_key = st.text_input("আপনার Gemini API Key দিন:", type="password")
-    system_role = st.text_area(
-        "এআই-এর ভূমিকা (System Prompt):",
-        value="তুমি একজন পেশাদার কাস্টমার সাপোর্ট এজেন্ট। নম্র ও সহজ ভাষায় সংক্ষিপ্ত উত্তর দাও।",
-    )
+    st.image("https://cdn-icons-png.flaticon.com/512/3429/3429149.png", width=90)
+    st.title("আদর্শ প্রাইভেট কেয়ার")
+    st.caption("গুণগত শিক্ষা, উজ্জ্বল ভবিষ্যৎ")
+    st.divider()
+    
+    st.subheader("🤖 এআই স্টাডি হেল্পার")
+    api_key = st.text_input("Gemini API Key দিন:", type="password")
+    
+    st.divider()
+    st.subheader("🔗 আমাদের সোশ্যাল মিডিয়া")
+    st.markdown("[🎥 ইউটিউব চ্যানেল](https://youtube.com)")
+    st.markdown("[👤 ফেসবুক প্রোফাইল / পেজ](https://facebook.com)")
 
-# ৩. চ্যাট হিস্ট্রি ধরে রাখার মেমোরি
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# মূল পেজ নেভিগেশন (ট্যাব)
+tab1, tab2, tab3, tab4 = st.tabs(["🏠 পরিচিতি ও কোর্সসমূহ", "🌟 বিশেষ বৈশিষ্ট্য", "📚 এআই শিক্ষক", "📞 যোগাযোগ ও ঠিকানা"])
 
-# ৪. পূর্বের মেসেজগুলো স্ক্রিনে দেখানো
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
+# ট্যাব ১: পরিচিতি ও কোর্সসমূহ
+with tab1:
+    st.header("স্বাগতম 'আদর্শ প্রাইভেট কেয়ার'-এ")
+    st.subheader("আপনার সন্তানের ভবিষ্যৎ কি সঠিক পথে এগোচ্ছে? ভর্তির জন্য আপনার সন্তানকে আদর্শ প্রাইভেট কেয়ার-এ নিয়ে আসুন।")
+    st.info("🏆 **আদর্শ প্রাইভেট কেয়ার - আপনার সন্তানের সাফল্যের সাথী!**")
+    
+    st.divider()
+    st.subheader("📚 আমাদের পাঠদান ব্যবস্থা")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.success("### 🏫 পঞ্চম থেকে অষ্টম শ্রেণি")
+        st.write("👉 **সকল বিষয় যত্নসহকারে পড়ানো হয়।**")
+        
+    with col2:
+        st.warning("### 🎓 নবম ও দশম শ্রেণি")
+        st.write("👉 **সকল বিভাগের গণিত ও ইংরেজি**")
+        st.write("👉 **বাণিজ্য বিভাগের সকল বিষয়**")
 
-# ৫. ইউজার ইনপুট ও এআই রেসপন্স
-user_input = st.chat_input("আপনার প্রশ্ন লিখুন...")
+# ট্যাব ২: আমাদের বিশেষ বৈশিষ্ট্য
+with tab2:
+    st.header("🌟 আমাদের বিশেষ বৈশিষ্ট্যসমূহ")
+    
+    st.markdown("""
+    * 🎯 **গণিতের বেসিক তৈরি:** দুর্বল শিক্ষার্থীদের গণিতের ভিত্তি মজবুত করা হয়।
+    * 📖 **ইংরেজি গ্রামার ও সিলেবাস:** সহজ নিয়মে গ্রামার এবং সম্পূর্ণ সিলেবাস শেষ করা হয়।
+    * 📝 **সাপ্তাহিক মডেল টেস্ট:** নিয়মিত পরীক্ষার মাধ্যমে মেধা যাচাই ও প্র্যাকটিস।
+    * 👨‍🏫 **বিশেষ কেয়ার:** দুর্বল ছাত্র-ছাত্রীদের আলাদাভাবে যত্ন ও গাইডলাইন দেওয়া হয়।
+    """)
+    
+    st.divider()
+    st.subheader("📊 আমাদের সাফল্য")
+    col_a, col_b, col_c = st.columns(3)
+    col_a.metric("পঞ্চম-অষ্টম সাফল্য", "১০০%")
+    col_b.metric("এসএসসি পাশের হার", "৯৮%")
+    col_c.metric("মডেল টেস্ট সুবিধা", "সাপ্তাহিক")
 
-if user_input:
-    if not api_key:
-        st.error("দয়া করে সাইডবারে আপনার Gemini API Key প্রদান করুন!")
-    else:
-        # ইউজারের প্রশ্ন স্ক্রিনে যোগ করা
-        st.session_state.messages.append(
-            {"role": "user", "content": user_input}
-        )
-        with st.chat_message("user"):
-            st.write(user_input)
-
-        # Gemini API কানেক্ট ও প্রসেসিং
+# ট্যাব ৩: এআই টিউটর (পড়াশোনায় সহায়তার জন্য)
+with tab3:
+    st.header("🤖 আপনার এআই স্টাডি অ্যাসিস্ট্যান্ট")
+    st.write("গণিত, ইংরেজি বা অন্য যেকোনো বিষয়ের পড়া বুঝতে এআই শিক্ষকের সাহায্য নিন।")
+    
+    if api_key:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-3.6-flash")
+            model = genai.GenerativeModel('gemini-2.5-flash')
+            
+            if "messages" not in st.session_state:
+                st.session_state.messages = []
 
-            full_prompt = f"System Role: {system_role}\nUser Question: {user_input}"
+            for message in st.session_state.messages:
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])
 
-            with st.chat_message("assistant"):
-                with st.spinner("চিন্তা করছে..."):
-                    response = model.generate_content(full_prompt)
-                    st.write(response.text)
+            if prompt := st.chat_input("পড়াশোনা সম্পর্কিত আপনার প্রশ্নটি লিখুন..."):
+                st.session_state.messages.append({"role": "user", "content": prompt})
+                with st.chat_message("user"):
+                    st.markdown(prompt)
 
-            # এআই-এর উত্তর মেমোরিতে সেভ করা
-            st.session_state.messages.append(
-                {"role": "assistant", "content": response.text}
-            )
-
+                with st.chat_message("assistant"):
+                    response = model.generate_content(prompt)
+                    st.markdown(response.text)
+                    st.session_state.messages.append({"role": "assistant", "content": response.text})
         except Exception as e:
             st.error(f"একটি ত্রুটি ঘটেছে: {e}")
+    else:
+        st.info("💡 এআই টিউটর ব্যবহার করতে বামপাশের সাইডবারে আপনার Gemini API Key দিন।")
+
+# ট্যাব ৪: যোগাযোগ
+with tab4:
+    st.header("📞 আমাদের সাথে যোগাযোগ করুন")
+    
+    col_loc, col_call = st.columns(2)
+    
+    with col_loc:
+        st.subheader("📍 ঠিকানা")
+        st.write("দক্ষিণগাঁও এক নম্বর রোড,")
+        st.write("ইবনে সিনা স্কুলের পাশে, ঢাকা।")
+        st.caption("📍 *গুগল ম্যাপে লোকেশন প্রদান করা আছে।*")
+        
+    with col_call:
+        st.subheader("📱 ফোন নম্বর")
+        st.write("📞 **০১৭২৩১৬৫৭২১**")
+        st.write("📞 **০১৫৬৩১৪৮৯১০**")
