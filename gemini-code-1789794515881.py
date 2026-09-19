@@ -9,7 +9,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
+st.markdown(
+    """
+    <link rel="manifest" href="manifest.json">
+    """,
+    unsafe_allow_html=True
+)
 # =========================================================
 # 2. CUSTOM CSS
 # =========================================================
@@ -107,7 +112,7 @@ st.markdown(
 # =========================================================
 with st.sidebar:
     try:
-        st.image("1000038219.png", use_container_width=True)
+        st.image("logo.png", use_container_width=True)
     except Exception:
         st.markdown(
             """
