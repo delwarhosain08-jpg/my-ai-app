@@ -25,7 +25,7 @@ with st.sidebar:
     st.divider()
     
     st.subheader("🔗 আমাদের সোশ্যাল মিডিয়া")
-    st.markdown("[🎥 ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3m1N101FhjTu2Qkzg)")
+    st.markdown("[🎥 ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2Qkzg)")
     st.markdown("[👤 ফেসবুক প্রোফাইল](https://www.facebook.com/share/1DHesGeakU/)")
 
 # মূল পেজ নেভিগেশন (ট্যাব)
