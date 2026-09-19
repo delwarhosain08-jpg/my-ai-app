@@ -1,5 +1,5 @@
 import streamlit as st
-import google.generativeai as genai
+from google import genai
 
 # ১. পেজ কনফিগারেশন
 st.set_page_config(
@@ -11,11 +11,9 @@ st.set_page_config(
 # ==========================================
 # 🔑 আপনার আসল API Key:
 # ==========================================
-MY_API_KEY = "AQ.Ab8RN6KM0TsQLinAm7PmJ4W-qqlZNjCU4uu-DdOE5zk1rAjnbw"
+MY_API_KEY = "AQ.Ab8RN6I0qchCJeasW1XXg6k_9-AC6GzQBEpU4kOYkHgpR7FP5A" 
 
-# ব্যাকএন্ডে API Key কনফিগার করা
-if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
-    genai.configure(api_key=MY_API_KEY)
+
 
 # সাইডবার: সোশ্যাল মিডিয়া লিংক ও পরিচিতি
 with st.sidebar:
@@ -74,21 +72,30 @@ with tab3:
     st.header("🤖 আপনার এআই স্টাডি অ্যাসিস্ট্যান্ট")
     st.write("গণিত, ইংরেজি বা অন্য যেকোনো বিষয়ের পড়া বুঝতে এআই শিক্ষকের সাহায্য নিন।")
     
-    if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
-        try:
-            model = genai.GenerativeModel('gemini-2.5-flash')
-            
-            if "messages" not in st.session_state:
-                st.session_state.messages = []
+if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-            for message in st.session_state.messages:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
-            if prompt := st.chat_input("পড়াশোনা সম্পর্কিত আপনার প্রশ্নটি লিখুন..."):
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
+    if prompt := st.chat_input("পড়াশোনা সম্পর্কিত আপনার প্রশ্নটি লিখুন..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
+            try:
+                client = genai.Client(api_key=MY_API_KEY)
+                response = client.models.generate_content(
+                    model='gemini-2.5-flash',
+                    contents=prompt,
+                )
+                with st.chat_message("assistant"):
+                    st.markdown(response.text)
+                st.session_state.messages.append({"role": "assistant", "content": response.text})
+            except Exception as e:
+                st.error(f"একটি ত্রুটি ঘটেছে: {e}")
 
                 with st.chat_message("assistant"):
                     response = model.generate_content(prompt)
