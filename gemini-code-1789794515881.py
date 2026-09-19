@@ -9,9 +9,9 @@ st.set_page_config(
 )
 
 # ==========================================
-# 🔑 আপনার আসল API Key টি নিচের কোটেশনের ভেতরে বসান:
+# 🔑 আপনার আসল API Key:
 # ==========================================
-MY_API_KEY = "এখানে_আপনার_API_KEY_বসাবেন"
+MY_API_KEY = "AQ.Ab8RN6KM0TsQLinAm7PmJ4W-qqlZNjCU4uu-DdOE5zk1rAjnbw"
 
 # ব্যাকএন্ডে API Key কনফিগার করা
 if MY_API_KEY and MY_API_KEY != "এখানে_আপনার_API_KEY_বসাবেন":
@@ -25,8 +25,8 @@ with st.sidebar:
     st.divider()
     
     st.subheader("🔗 আমাদের সোশ্যাল মিডিয়া")
-    st.markdown("[🎥 ইউটিউব চ্যানেল](https://youtube.com)")
-    st.markdown("[👤 হোসেনের ফেসবুক প্রোফাইল](https://facebook.com)")
+    st.markdown("[🎥 ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3m1N101FhjTu2Qkzg)")
+    st.markdown("[👤 ফেসবুক প্রোফাইল](https://www.facebook.com/share/1DHesGeakU/)")
 
 # মূল পেজ নেভিগেশন (ট্যাব)
 tab1, tab2, tab3, tab4 = st.tabs(["🏠 পরিচিতি ও কোর্সসমূহ", "🌟 বিশেষ বৈশিষ্ট্য", "📚 এআই শিক্ষক", "📞 যোগাযোগ ও ঠিকানা"])
@@ -97,7 +97,7 @@ with tab3:
         except Exception as e:
             st.error(f"একটি ত্রুটি ঘটেছে: {e}")
     else:
-        st.warning("⚠️ কোডের ভেতরে API Key বসানো হয়নি। দয়া করে কোডের ১৬ নম্বর লাইনে আপনার API Key টি বসান।")
+        st.warning("⚠️ কোডের ভেতরে API Key বসানো হয়নি। দয়া করে কোডের ১৪ নম্বর লাইনে আপনার API Key টি বসান।")
 
 # ট্যাব ৪: যোগাযোগ
 with tab4:
