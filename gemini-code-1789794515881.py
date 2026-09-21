@@ -132,8 +132,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-    st.divider()
+ st.divider()
     st.caption("© 2026 আদর্শ প্রাইভেট কেয়ার")
 
 # =========================================================
