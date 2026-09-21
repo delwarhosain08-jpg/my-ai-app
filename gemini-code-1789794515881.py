@@ -124,23 +124,14 @@ with st.sidebar:
     st.divider()
     st.subheader("🌐 সোশ্যাল মিডিয়া ও ইউটিউব")
     # এখানে আপনার ফেসবুক পেজ বা গ্রুপ এবং ইউটিউব চ্যানেলের আসল লিংক বসিয়ে দেবেন
-    st.markdown(
-        """
-        st.markdown(
+st.subheader("🌐 সোশ্যাল মিডিয়া ও ইউটিউব")
+st.markdown(
     """
-    - 📘 **[আমাদের ফেসবুক পেজ]("https://www.facebook.com/share/1J55ZjGBqT/" target="_blank" style="display:block; background:#1877f2; color:white; padding:12px; margin:8px 0; border-radius:10px; text-align:center; text-decoration:none; font-weight:bold;">
-            👤 Facebook Profile
-)**
-    - 🔴 **[আমাদের ইউটিউব চ্যানেল]("https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2Qkzg" target="_blank" style="display:block; background:#ff0000; color:white; padding:12px; margin:8px 0; border-radius:10px; text-align:center; text-decoration:none; font-weight:bold;">
-            🎥 YouTube Channel
-)**
+    - 📘 [আমাদের ফেসবুক পেজ](https://www.facebook.com/share/1J55ZjGBqT/)
+    - 🔴 [আমাদের ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2Qkzg)
     """,
     unsafe_allow_html=True
 )
-)
-        """,
-        unsafe_allow_html=True
-    )
 
     st.divider()
     st.caption("© 2026 আদর্শ প্রাইভেট কেয়ার")
