@@ -4,7 +4,7 @@ from supabase import create_client, Client
 # =========================================================
 # 1. SUPABASE CONNECTION (অনলাইন ডাটাবেজ কানেকশন)
 # =========================================================
-SUPABASE_URL = "mbmgebvnxwnvbiwjipbk"
+SUPABASE_URL = "https://mbmgebvnxwnvbiwjipbk.supabase.co"
 SUPABASE_KEY = "sb_publishable_qb0mb9W7_9jfIsbkaDz_EQ_xLqegm5s"
 
 try:
@@ -99,7 +99,7 @@ st.markdown(
 )
 
 # =========================================================
-# 4. SIDEBAR (লোগো, যোগাযোগ ও সোশ্যাল মিডিয়া লিংক)
+# 4. SIDEBAR (লোগো, যোগাযোগ ও সোশ্যাল মিডিয়া লিংক)
 # =========================================================
 with st.sidebar:
     try:
@@ -122,17 +122,16 @@ with st.sidebar:
     st.markdown("📍 **স্থান:** ঢাকা, বাংলাদেশ\n📱 **মোবাইল:** 01734165721\n✉️ **Email:** info@adarshaprivatecare.com")
     
     st.divider()
-    st.subheader("🌐 সোশ্যাল মিডিয়া ও ইউটিউব")
-    # এখানে আপনার ফেসবুক পেজ বা গ্রুপ এবং ইউটিউব চ্যানেলের আসল লিংক বসিয়ে দেবেন
-st.subheader("🌐 সোশ্যাল মিডিয়া ও ইউটিউব")
-st.markdown(
-    """
-    - 📘 [আমাদের ফেসবুক পেজ](https://www.facebook.com/share/1J55ZjGBqT/)
-    - 🔴 [আমাদের ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2Qkzg)
-    """,
-    unsafe_allow_html=True
-)
- st.divider()
+    st.subheader("🌐 সোশ্যাল মিডিয়া ও ইউটিউব")
+    st.markdown(
+        """
+        - 📘 [আমাদের ফেসবুক পেজ](https://www.facebook.com/share/1J55ZjGBqT/)
+        - 🔴 [আমাদের ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2QkZg)
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.divider()
     st.caption("© 2026 আদর্শ প্রাইভেট কেয়ার")
 
 # =========================================================
@@ -206,18 +205,18 @@ with tab2:
     if selected_class == "নবম-দশম শ্রেণি":
         st.subheader("🔥 নবম-দশম শ্রেণির কোর্স ও সাজেশন")
         with st.expander("📐 গণিত কোর্স ও সাজেশন"):
-            st.markdown("- **অধ্যায় ৩:** বীজগণিতীয় রাশি")
-            st.markdown("- **অধ্যায় ৯:** ত্রিকোণমিতি")
+            st.markdown("- **অধ্যায় ৩:** বীজগণিতীয় রাশি")
+            st.markdown("- **অধ্যায় ৯:** ত্রিকোণমিতি")
     else:
         st.subheader(f"📖 {selected_class} এর পঠ্যসূচি")
         st.write("খুব শীঘ্রই আপডেট করা হবে।")
 
 # =========================================================
-# 9. STUDENT CHAT ROOM TAB (রিয়েল-টাইম চ্যাট)
+# 9. STUDENT CHAT ROOM TAB (রিয়েল-টাইম চ্যাট)
 # =========================================================
 with tab3:
     st.header("💬 শিক্ষার্থী আলোচনা ও চ্যাট রুম")
-    st.write("এখানে শিক্ষার্থীরা নিজেদের মধ্যে পড়ালেখা নিয়ে রিয়েল-টাইমে চ্যাট করতে পারবে।")
+    st.write("এখানে শিক্ষার্থীরা নিজেদের মধ্যে পড়ালেখা নিয়ে রিয়েল-টাইমে চ্যাট করতে পারবে।")
     
     with st.form("chat_form", clear_on_submit=True):
         col_name, col_msg = st.columns([1, 2])
@@ -235,12 +234,12 @@ with tab3:
                         "name": student_name,
                         "message": student_text
                     }).execute()
-                    st.success("বার্তা পাঠানো হয়েছে!")
+                    st.success("বার্তা পাঠানো হয়েছে!")
                     st.rerun()
                 except Exception:
-                    st.error("বার্তা পাঠাতে সমস্যা হয়েছে।")
+                    st.error("বার্তা পাঠাতে সমস্যা হয়েছে।")
             else:
-                st.warning("নাম এবং বার্তা উভয়ই লিখুন অথবা ডাটাবেজ চেক করুন।")
+                st.warning("নাম এবং বার্তা উভয়ই লিখুন অথবা ডাটাবেজ চেক করুন।")
 
     st.divider()
     
@@ -283,10 +282,10 @@ with tab4:
                         "title": notice_title,
                         "description": notice_desc
                     }).execute()
-                    st.success("সফলভাবে নোটিশ প্রকাশ করা হয়েছে!")
+                    st.success("সফলভাবে নোটিশ প্রকাশ করা হয়েছে!")
                     st.rerun()
                 except Exception:
-                    st.error("নোটিশ প্রকাশ করতে সমস্যা হয়েছে।")
+                    st.error("নোটিশ প্রকাশ করতে সমস্যা হয়েছে।")
             else:
                 st.error("সবগুলো ঘর পূরণ করুন।")
 
