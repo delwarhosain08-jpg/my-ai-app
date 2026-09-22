@@ -126,7 +126,7 @@ with st.sidebar:
     st.markdown(
         """
         - 📘 [আমাদের ফেসবুক পেজ](https://www.facebook.com/share/1J55ZjGBqT/)
-        - 🔴 [আমাদের ইউটিউব চ্যানেল](https://www.youtube.com/channel/UC0_gzD3mlN1O1FhjTu2QkZg)
+        - 🔴 [আমাদের ইউটিউব চ্যানেল](https://www.youtube.com/@teach.20accademy)
         """,
         unsafe_allow_html=True
     )
