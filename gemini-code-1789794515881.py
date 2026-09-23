@@ -101,13 +101,13 @@ st.markdown(
 # =========================================================
 # 4. SIDEBAR (লোগো, যোগাযোগ ও সোশ্যাল মিডিয়া লিংক)
 # =========================================================
-with st.sidebar:
+    with st.sidebar:
     try:
         st.image("logo.png", use_container_width=True)
     except Exception:
         st.markdown("<div style='text-align:center; font-size:60px;'>🎓</div>", unsafe_allow_html=True)
 
-    with st.sidebar:
+         with st.sidebar:
     try:
         st.image("111111.jpg", use_container_width=True)
     except Exception:
