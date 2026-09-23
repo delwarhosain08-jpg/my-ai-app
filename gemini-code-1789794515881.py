@@ -107,6 +107,12 @@ with st.sidebar:
     except Exception:
         st.markdown("<div style='text-align:center; font-size:60px;'>🎓</div>", unsafe_allow_html=True)
 
+    with st.sidebar:
+    try:
+        st.image("111111.jpg", use_container_width=True)
+    except Exception:
+        st.markdown("<div style='text-align:center; font-size:60px;'>🎓</div>", unsafe_allow_html=True)
+        
     st.markdown(
         """
         <div style="text-align:center; padding:5px;">
