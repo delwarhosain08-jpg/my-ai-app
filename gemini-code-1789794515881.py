@@ -101,7 +101,7 @@ st.markdown(
 # =========================================================
 # 4. SIDEBAR (লোগো, যোগাযোগ ও সোশ্যাল মিডিয়া লিংক)
 # =========================================================
-    with st.sidebar:
+        with st.sidebar:
     try:
         st.image("logo.png", use_container_width=True)
     except Exception:
